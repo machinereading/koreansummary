@@ -14,8 +14,17 @@
 	pip3 install -r requirements.txt
 
 ## Data Preparation For Korean
+### Data
+Data is came from [모두의 말뭉치](https://corpus.korean.go.kr/) and composed of list of the documents.  
+Dependency and Frame semantics are parsed by [ETRI OPEN API](https://aiopen.etri.re.kr/) and [frameBERT](https://github.com/machinereading/frameBERT).   
+Every documents have their id, original text, abstractive summary. 'document_id' is a id of each documents.   
+'original' and 'abstractive_summary' have text, dependency, and frame parsed results for original document and human summury.   
+Every dependency and frame results are in sentences. 
+* sample: json_data/sample.json
+
+### Preprocess
 For data preparation, you have to make json formatted data files(korean.test.json, korean.valid.json, korean.train.json) in th same directory(JSON_PATH).  
-Files have a same format of `json_data/sample.json`.   
+Files have a same format of `json_data/sample.json`.  
 If you want to split json files, you can split them as 'korean.test.0.json', 'korean.test.1.json', 'korean.test.2.json', ... .
 
 	python preprocess.py -mode format_to_bert -raw_path JSON_PATH -save_path BERT_DATA_PATH  -lower -n_cpus 1 -log_file ../logs/preprocess.log
@@ -31,7 +40,7 @@ If you want to split json files, you can split them as 'korean.test.0.json', 'ko
 * use `-mode valiadte` with `-test_all`, the system will load all saved checkpoints and select the top ones to generate summaries (this will take a while)
 ## Licenses
 * `CC BY-NC-SA` [Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/2.0/)
-* If you want to commercialize this resource, [please contact to us](http://mrlab.kaist.ac.kr/contact)
+* If you want to commercialize this resource, [please contact to us](http://semanticweb.kaist.ac.kr/)
 
 ## Publisher
 [Machine Reading Lab](http://semanticweb.kaist.ac.kr/) @ KAIST
