@@ -1,0 +1,11 @@
+tensorboard==2.2.2
+tensorboard-plugin-wit==1.7.0
+tensorboardX==1.9
+tensorflow==2.2.0
+tensorflow-estimator==2.2.0
+torch==1.1.0
+torchtext==0.6.0
+torchvision==0.3.0
+tqdm==4.48.0
+transformers==3.4.0
+
