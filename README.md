@@ -22,6 +22,103 @@ Every documents have their id, original text, abstractive summary. 'document_id'
 Every dependency and frame results are in sentences. 
 * sample: json_data/sample.json
 
+#### Data Format
+* document_id
+* subclass
+* head: news' title
+* subhead: news' subtitle
+* original: information of source text.
+	* text: source text for a sentence
+	* morp, morp_eval, WSD, word, NE, chunk, dependency, phrase_dependency, SRL, relation, SA, ZA: which are results of NLU by [ETRI OPEN API](https://aiopen.etri.re.kr/).
+	* dependency
+		* id: word id
+		* text: word's text
+		* head: head word's id
+		* label
+		* mod: dependents' id list
+	* frame: which is results from frame semantics parsing by [frameBERT](https://github.com/machinereading/frameBERT).
+		* first list means sentences words list
+		* second list shows LU(Lexical Unit)
+		* third list shows LU's frame 
+		* fourth list shows frame arguments by BIO format
+* abstractive_summary: information of abstractive summary.
+* extractive_summary: information of extractive summary. 
+	
+#### Example
+	
+	[
+		{
+			"document_id": "sample0000000000.0",
+			"subclass": "NA",
+			"head": "“적자나도 주민건강 지킨다” 정선군의 도전",
+			"subhead": "최승준 군수, 150병상 의료원 추진",
+			"original": [
+				{
+					"id": 0,
+					"reserve_str": "",
+					"text": "“적자나도 주민건강 지킨다” 정선군의 도전",
+					"morp": [...],
+					"morp_eval": [...],
+					"WSD": [...],
+					"word": [...],
+					"NE": [...],
+					"chunk": [...],
+					"dependency": [
+						{
+						"id": 0,
+						"text": "“적자나도",
+						"head": 2,
+						"label": "NP_SBJ",
+						"mod": [],
+						"weight": 0.350977
+						},
+						...
+					]
+					"phrase_dependency": [...],
+					"SRL": [...],
+					"relation": [],
+					"SA": [],
+					"ZA": [],
+					"frame": [
+						[
+							[
+								"“적자나도",
+								"주민건강",
+								"지킨다”",
+								"정선군의",
+								"도전"
+							],
+							[
+								"_",
+								"_",
+								"지키다.v",
+								"_",
+								"_"
+							],
+							[
+								"_",
+								"_",
+								"Protecting",
+								"_",
+								"_"
+							],
+							[
+								"O",
+								"B-Asset",
+								"O",
+								"O",
+								"O"
+							]
+						],
+						...
+					]
+				}
+			],
+			"abstractive_summary": [...],
+			"extractive_summary": [...]
+		}
+	]
+			
 ### Preprocess
 For data preparation, you have to make json formatted data files(korean.test.json, korean.valid.json, korean.train.json) in th same directory(JSON_PATH).  
 Files have a same format of `json_data/sample.json`.  
