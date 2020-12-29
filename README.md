@@ -135,6 +135,7 @@ If you want to split json files, you can split them as 'korean.test.0.json', 'ko
 * `-mode` can be {`validate, test`}, where `validate` will inspect the model directory and evaluate the model for each newly saved checkpoint, `test` need to be used with `-test_from`, indicating the checkpoint you want to use
 * `MODEL_PATH` is the directory of saved checkpoints
 * use `-mode valiadte` with `-test_all`, the system will load all saved checkpoints and select the top ones to generate summaries (this will take a while)
+
 ## Licenses
 * `CC BY-NC-SA` [Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/2.0/)
 * If you want to commercialize this resource, [please contact to us](http://semanticweb.kaist.ac.kr/)
