@@ -156,7 +156,7 @@ class Translator(object):
 					pred_str = pred.replace('[unused1]', '').replace('[unused4]', '').replace('[PAD]', '').replace(
 						'[unused2]', '').replace(r' +', ' ').replace(' [unused3] ', ' <q> ').replace('[unused3]',
 					                                                                                 '').strip()
-					# pred_str = correction(' '.join(batch.src_str[trans_n]), pred_str)
+					pred_str = correction(' '.join(batch.src_str[trans_n]), pred_str)
 					gold_str = gold.strip()
 					if (self.args.recall_eval):
 						_pred_str = ''
